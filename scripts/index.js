@@ -1,3 +1,11 @@
+const removeActiveClass = () =>{
+  const activeButtons = document.getElementsByClassName('active');
+  for(let btn of activeButtons){
+    btn.classList.remove('active');
+  }
+  console.log(activeButtons);
+}
+
 const loadLevelButtons = () => {
     fetch('https://openapi.programming-hero.com/api/levels/all')
     .then(res => res.json())
@@ -10,6 +18,7 @@ const loadVocabularyCards = (level) => {
   fetch(`https://openapi.programming-hero.com/api/level/${level}`)
   .then(res => res.json())
   .then(data =>{
+    removeActiveClass();
     const clickedButton = document.getElementById(`btn-${level}`);
     clickedButton.classList.add('active');
     console.log(clickedButton);
