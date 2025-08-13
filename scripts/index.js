@@ -10,6 +10,9 @@ const loadVocabularyCards = (level) => {
   fetch(`https://openapi.programming-hero.com/api/level/${level}`)
   .then(res => res.json())
   .then(data =>{
+    const clickedButton = document.getElementById(`btn-${level}`);
+    clickedButton.classList.add('active');
+    console.log(clickedButton);
     displayVocabularyCards(data.data);
   })
 }
@@ -23,7 +26,7 @@ const displayLevelButtons = (lessons) => {
 
     const levelBtnDiv = document.createElement('div');
     levelBtnDiv.innerHTML = `
-    <button onclick = "loadVocabularyCards(${lesson.level_no})" class="btn btn-primary flex ">Lesson-${lesson.level_no}</button>
+    <button id="btn-${lesson.level_no}" onclick = "loadVocabularyCards( '${lesson.level_no}')" class="btn btn-primary flex ">Lesson-${lesson.level_no}</button>
     `
    levelBtnContainer.append(levelBtnDiv);
     
@@ -33,7 +36,7 @@ const displayLevelButtons = (lessons) => {
 const displayVocabularyCards = (elements) =>{
    
   const vocabularyCardsContainer = document.getElementById('vocabularyCardsContainer')
-    
+    vocabularyCardsContainer.innerHTML = " ";
   for(const element of elements){
     console.log(element);
     const vocabularyCard = document.createElement('div');
