@@ -1,3 +1,13 @@
+const showLoader=()=>{
+    document.getElementById('loader').classList.remove('hidden');
+    document.getElementById('vocabularyCardsContainer').classList.add('hidden')
+}
+const hideLoader=()=>{
+    document.getElementById('loader').classList.add('hidden');
+    document.getElementById('vocabularyCardsContainer').classList.remove('hidden')
+}
+
+
 const removeActiveClass = () =>{
   const activeButtons = document.getElementsByClassName('active');
   for(let btn of activeButtons){
